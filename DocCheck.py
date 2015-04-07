@@ -31,13 +31,10 @@ def checker(document):
     for word in f.split():
         word = word.strip(string.punctuation)
         if hunspellObj.spell(word) == False:
+            suggestions = ' '.join(hunspellObj.suggest(word))
             if args.log:
-                log.write(word + '\n')
-                log.write(' '.join(hunspellObj.suggest(word)) + '\n')
-                log.write('\n')
+                log.write(word + '\n' + suggestions + '\n \n')
             else:
-                print(word)
-                print(hunspellObj.suggest(word))
-                print('')
+                print(word + '\n' + suggestions + '\n')
 
 checker(args.doc)
