@@ -33,8 +33,8 @@ def checker(document):
         if hunspellObj.spell(word) == False:
             suggestions = ' '.join(hunspellObj.suggest(word))
             if args.log:
-                log.write(word + '\n' + suggestions + '\n \n')
+                log.write(word + '\n' + 'Suggestions: ' + suggestions + '\n \n')
             else:
-                print(word + '\n' + suggestions + '\n')
+                print(word + '\n' + 'Suggestions: ' + suggestions + '\n')
 
 checker(args.doc)
