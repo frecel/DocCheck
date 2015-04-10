@@ -7522,6 +7522,7 @@ buggy/RSMT
 bugle/GMDSRZ
 bugler/M
 bug's
+bugfix/M
 Buick/M
 builder/SM
 building/SM
@@ -61421,6 +61422,7 @@ wordless/Y
 wordplay/SM
 word's
 Wordsworth/M
+unicode/MS
 wordy/TPR
 wore
 workability's
@@ -62292,6 +62294,7 @@ ksirk
 ksnakeduel
 ksnapshot
 kspaceduel
+kspell
 ksquares
 kstars
 ksudoku
@@ -62336,4 +62339,8 @@ xubuntu
 yakuake
 zanshin
 ##file extensions protocols languages
+API
+JavaScript
+QML
+SQL
 tar
