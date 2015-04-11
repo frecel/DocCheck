@@ -4,6 +4,7 @@ import argparse
 import string
 import re
 import os
+import sys
 
 #commandline arguments
 parser = argparse.ArgumentParser()
@@ -13,11 +14,12 @@ parser.add_argument("doc", help="A file to be procesed")
 
 #log the spellcheck results in a file
 parser.add_argument("-l", "--log", action="store_true", help="log the spell check output in a file")
+parser.add_argument("-d", "--dirlog", action="store", help="logs the spell check output in a folder you point to")
 parser.add_argument("-r", "--recursive", action="store_true", help="search a directory recursively")
 args = parser.parse_args()
 
 #dictionary, to be added as an optional cli arg later with the default being a modified en_US dict
-hunspellObj = hunspell.HunSpell('./dictionary/en-US.dic', './dictionary/en-US.aff')
+hunspellObj = hunspell.HunSpell('./dictionary/en-KDE.dic', './dictionary/en-KDE.aff')
 
 
 
@@ -25,6 +27,11 @@ hunspellObj = hunspell.HunSpell('./dictionary/en-US.dic', './dictionary/en-US.af
 def checker(document):
     if args.log:
         log = open(document + '-log.txt', 'w+')
+    elif args.dirlog:
+        if os.path.isdir(args.dirlog):
+            log = open(args.dirlog + os.path.basename(document)p + '-log.txt', 'w+')
+        else:
+            sys.exit("follow -d argument with a directory")
     f = open(document).read()
     #remove all the XML entities from text
     f = re.sub('&[^;]*;', ' ', f)
@@ -34,7 +41,7 @@ def checker(document):
         word = word.strip(string.punctuation)
         if hunspellObj.spell(word) == False:
             suggestions = ' '.join(hunspellObj.suggest(word))
-            if args.log:
+            if log:
                 log.write(word + '\n' + 'Suggestions: ' + suggestions + '\n \n')
             else:
                 print(word + '\n' + 'Suggestions: ' + suggestions + '\n')
@@ -54,4 +61,4 @@ elif os.path.isdir(args.doc): #if argument was a directory
             if os.path.splitext(files)[1] == '.docbook':
                 checker(args.doc + files)    
 else:
-    print('This is not a file or a directory')
+    sys.exit('This is not a file or a directory')
