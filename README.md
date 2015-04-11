@@ -20,7 +20,7 @@ You can also specify where the log files should be kept
 I just realized that that if you go recursively through a directory and put all of the log files in one directory chances are you are going to have multiple files with the same name (ex. index.docbook). Every time DocCheck will go through a new file with the same name as another one it check from another directory it will just write over the log file since -d and -l arguments use the same format for file names.
 
 ##Dictionary:
-The us-KDE dictionary included with DocCheck is a modified version of Mozilla's en-US dictionary for Firefox browser. It is a more technical dictionary which includes names of programming languages, protocols, file extensions and names of many KDE projects. It also allows for different spelling variants of the some words (ex. both colour and color are acceptable words).
+The en-KDE dictionary included with DocCheck is a modified version of Mozilla's en-US dictionary for Firefox browser. It is a more technical dictionary which includes names of programming languages, protocols, file extensions and names of many KDE projects. It also allows for different spelling variants of the some words (ex. both colour and color are acceptable words).
 
 
 
